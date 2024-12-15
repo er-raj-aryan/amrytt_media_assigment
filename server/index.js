@@ -14,8 +14,8 @@ app.use( cors({
     credentials: true,
   }));
 
-  const username = 'raj-dev';
-  const password = 'MmkKnBmQPr9Ucva';
+  const username = process.env.MONGODB_USERNAME;
+  const password = process.env.MONGODB_PASSWORD;
 
 const connectionString = `mongodb+srv://${username}:${password}@cluster0.8jz8v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0` 
 
