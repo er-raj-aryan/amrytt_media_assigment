@@ -1,19 +1,21 @@
 import mongoose from 'mongoose';
 
-const projectSchema = new mongoose.Schema({ 
+const productSchema = new mongoose.Schema({ 
+    // id:{
+    //     type: Number,
+    //     required: true,
+    //     autoIncrement: true,
+    //     unique: true
+    // },
     product:{
         type: 'string',
-        required: true,
+        required: [true, "Please enter product name"],
     },  
     category:{
         type: 'string',
         required: true,
     },  
-    stock:{
-        type: 'string',
-        required: true,
-    },  
-    price:{
+    amount:{
         type: 'number',
         required: true,
     },  
@@ -28,4 +30,6 @@ const projectSchema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model('Project', projectSchema);
+const Product = mongoose.model('Product', productSchema);
+
+export default Product;
