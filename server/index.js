@@ -2,7 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import ProductRoutes from './Routes/routes.js';
+import ProductRoutes from './Routes/products.routes.js';
+import CategoryRoutes from './Routes/category.routes.js';
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -15,8 +16,13 @@ const password = process.env.MONGODB_PASSWORD ? process.env.MONGODB_PASSWORD.tri
 // middleware
 app.use(express.json());
 app.use( cors({
-    origin: ["http://localhost:8000", "https://amrytt-media-assgiment-client.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: [
+        "http://localhost:8000",
+        "https://amrytt-media-assgiment-client.vercel.app",
+        "http://localhost:3001",
+        "http://localhost:3000"
+    ],
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     credentials: true,
   }));
   app.use(express.urlencoded({extended: false})); 
@@ -31,6 +37,7 @@ mongoose.connect(connectionString)
 
 // routes
 app.use("/api/products", ProductRoutes);
+app.use("/api/category", CategoryRoutes);
 
 app.get('/', (req, res) => {
     res.json({name:'Hello from server'});

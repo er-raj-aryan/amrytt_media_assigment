@@ -1,12 +1,6 @@
 import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({ 
-    // id:{
-    //     type: Number,
-    //     required: true,
-    //     autoIncrement: true,
-    //     unique: true
-    // },
     product:{
         type: 'string',
         required: [true, "Please enter product name"],
