@@ -22,22 +22,31 @@ import {
 } from "@/components/ui/select";
 import React, { useState } from "react";
 
+
+export interface Category {
+  _id: string;
+  category: string;
+}
+
 export interface HeaderProps {
   handleAddProduct: (data: {
     product: string;
-    amount: string;
+    amount: number;
     category: string;
     status: string;
   }) => void;
+  category:Category[]
 }
 
-export default function AddProduct({ handleAddProduct }: HeaderProps) {
+export default function AddProduct({ handleAddProduct,category }: HeaderProps) {
   const [data, setData] = useState({
     product: "",
-    amount: "",
+    amount: 0,
     category: "",
     status: "",
   });
+
+  
 
   const handleClickAddProduct = () => {
     handleAddProduct(data);
@@ -83,17 +92,20 @@ export default function AddProduct({ handleAddProduct }: HeaderProps) {
                 setData((prevState) => ({ ...prevState, category: value }))
               }
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full capitalize">
                 <SelectValue placeholder="Select Product Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="electronic">Electronic</SelectItem>
-                <SelectItem value="fashion">Fashion</SelectItem>
-                <SelectItem value="clothing">Clothing</SelectItem>
+                {category?.map((item) => (
+                  <SelectItem key={item._id} className="capitalize" value={item.category?.toLocaleLowerCase()}>
+                    {item.category}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
             {/* product price */}
             <Input
+              type="number"
               placeholder="Price"
               value={data.amount}
               name="amount"
@@ -128,7 +140,7 @@ export default function AddProduct({ handleAddProduct }: HeaderProps) {
             <Button
               disabled={
                 data.product === "" &&
-                data.amount === "" &&
+                data.amount === 0 &&
                 data.category === "" &&
                 data.status === ""
               }

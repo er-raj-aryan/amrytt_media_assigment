@@ -20,47 +20,59 @@ import {
 } from "@/components/ui/select";
 import React, { useEffect, useState } from "react";
 
+export interface Category {
+  _id: string;
+  category: string;
+}
+
 export interface HeaderProps {
   handleEditProduct: (data: {
-    id:string;
+    _id: string;
     product: string;
-    amount: string;
+    amount: number;
     category: string;
     status: string;
   }) => void;
   setOpenEdit: React.Dispatch<React.SetStateAction<boolean>>;
-  openEdit:boolean;
+  openEdit: boolean;
   editData: {
-    id: string;
+    _id: string;
     product: string;
-    amount: string;
+    amount: number;
     category: string;
     status: string;
   };
+  category: Category[];
 }
 
-export default function EditProduct({ handleEditProduct ,setOpenEdit,openEdit,editData}: HeaderProps) {
+export default function EditProduct({
+  handleEditProduct,
+  setOpenEdit,
+  openEdit,
+  editData,
+  category,
+}: HeaderProps) {
   const [data, setData] = useState({
-    id:"",
+    _id: "",
     product: "",
-    amount: "",
+    amount: 0,
     category: "",
     status: "",
   });
 
-  useEffect(() => {
-    console.log("editData",editData)
-    if(openEdit && editData){
-        setData({
-          id: editData.id,
-          product: editData.product,
-          amount: editData.amount,
-          category: editData.category,
-          status: editData.status
-        });
-    }
-  }, [openEdit,editData,]);
+ 
 
+  useEffect(() => {
+    if (openEdit && editData) {
+      setData({
+        _id: editData._id,
+        product: editData.product,
+        amount: editData.amount,
+        category: editData.category,
+        status: editData.status,
+      });
+    }
+  }, [openEdit, editData]);
 
   const handleClickAddProduct = () => {
     handleEditProduct(data);
@@ -102,17 +114,24 @@ export default function EditProduct({ handleEditProduct ,setOpenEdit,openEdit,ed
                 setData((prevState) => ({ ...prevState, category: value }))
               }
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full capitalize">
                 <SelectValue placeholder="Select Product Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="electronic">Electronic</SelectItem>
-                <SelectItem value="fashion">Fashion</SelectItem>
-                <SelectItem value="clothing">Clothing</SelectItem>
+                {category?.map((item) => (
+                  <SelectItem
+                    key={item._id}
+                    className="capitalize"
+                    value={item.category?.toLocaleLowerCase()}
+                  >
+                    {item.category}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
             {/* product price */}
             <Input
+              type="number"
               placeholder="Price"
               value={data.amount}
               name="amount"
@@ -148,7 +167,7 @@ export default function EditProduct({ handleEditProduct ,setOpenEdit,openEdit,ed
             <Button
               disabled={
                 data.product === "" &&
-                data.amount === "" &&
+                data.amount === 0 &&
                 data.category === "" &&
                 data.status === ""
               }

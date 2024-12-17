@@ -4,6 +4,8 @@ import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "@/components/header";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ToastContainer />
         <SidebarProvider>
           <AppSidebar />
           <div className="p-6 w-full flex flex-col gap-6 bg-[#F9FAFB]">

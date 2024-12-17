@@ -14,12 +14,17 @@ import { DownloadIcon } from "lucide-react";
 import  AddProduct  from "./add-product";
 import React from "react";
 
+export interface Category {
+  _id: string;
+  category: string;
+}
 export interface HeaderProps {
-  handleAddProduct: (data:{ product: string; amount: string; category: string; status: string }) => void;
+  handleAddProduct: (data:{ product: string; amount: number; category: string; status: string }) => void;
   handleExportData: () => void;
+   category: Category[];
 }
 
-export default function Header({ handleAddProduct,handleExportData }: HeaderProps) {
+export default function Header({ handleAddProduct,handleExportData,category }: HeaderProps) {
   return (
     <>
       <div className="w-full flex justify-between items-center gap-4 ">
@@ -45,7 +50,7 @@ export default function Header({ handleAddProduct,handleExportData }: HeaderProp
           hover:text-gray-600 hover:opacity-90">
             <DownloadIcon /> Export
           </Button>
-          <AddProduct handleAddProduct={handleAddProduct} />
+          <AddProduct category={category} handleAddProduct={handleAddProduct} />
         
         </div>
       </div>

@@ -3,14 +3,14 @@ import { ColumnDef } from "@tanstack/react-table"
 
 export const payments: Payment[] = [
     {
-      id: "728ed52f",
+      _id: "728ed52f",
       product:"iphone 12",
       category:"electronics",
       amount: 100,
       status: "pending",
     },
     {
-      id: "489e1d42",
+      _id: "489e1d42",
       product:"iphone 12",
       category:"electronics",
       amount: 125,

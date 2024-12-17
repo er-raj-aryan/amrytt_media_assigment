@@ -32,12 +32,12 @@ const items = [
   },
   {
     title: "Categories",
-    url: "/",
+    url: "/categories",
     icon: Layers2Icon,
   },
   {
     title: "Orders",
-    url: "/",
+    url: "/orders",
     icon: ShoppingBasketIcon,
   },
 ];

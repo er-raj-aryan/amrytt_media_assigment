@@ -26,8 +26,8 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData , TValue>[]
   data: TData[],
   filterString:string,
-  handleEdit: (data: { id: string; product: string; amount: string; category: string; status: string }) => void;
-  handleDelete: (data: { id: string; product: string; amount: string; category: string; status: string }) => void;
+  handleEdit: (data: { _id: string; product: string; amount: number; category: string; status: string }) => void;
+  handleDelete: (data: { _id: string; product: string; amount: number; category: string; status: string }) => void;
 }
 
 
@@ -96,12 +96,12 @@ export function DataTable<TData, TValue>({
                   ))}
                   <TableCell className="text-right">
                     <div className="flex gap-2 justify-end">
-                    <Button variant={"ghost"} className=" w-4" onClick={() => {
+                    <Button variant={"secondary"} className=" w-4" onClick={() => {
                       // @ts-expect-error
                       handleEdit(row.original)}}>
                       <Edit2Icon />
                     </Button>
-                    <Button variant={"ghost"} className=" w-4" onClick={() => {
+                    <Button variant={"destructive"} className=" w-4" onClick={() => {
                         // @ts-expect-error
                       handleDelete(row.original)}}>
                       <DeleteIcon />

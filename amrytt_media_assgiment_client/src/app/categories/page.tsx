@@ -1,11 +1,11 @@
 "use client";
-import ProductsPage from "@/components/pages/productsPages";
+import CategoriesPages from "@/components/pages/categoriesPages";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <ProductsPage />
+      <CategoriesPages />
     </div>
   );
 };

@@ -5,6 +5,14 @@ import { Input } from "./ui/input";
 import Badge from "@mui/material/Badge";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Header() {
   return (
@@ -39,7 +47,9 @@ export function Header() {
         </Button>
       </div>
       {/* Profile */}
-      <div className="flex items-center gap-2">
+      <DropdownMenu>
+          <DropdownMenuTrigger>
+            <div className="flex items-center gap-2">
         <Avatar className="w-8 h-8">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
@@ -49,6 +59,15 @@ export function Header() {
           <span className="text-xs text-manatee-600">Admin</span>
         </div>
       </div>
+      </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Logout</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      
     </div>
   );
 }

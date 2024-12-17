@@ -1,31 +1,31 @@
-import { Clock } from "lucide-react";
+import {  IndianRupee, Layers2Icon, ShoppingBagIcon } from "lucide-react";
 
 export const productCard = [
     {
         id: 1,
-        title: "Total Project",
+        title: "Total Amount",
         value: 6784,
         percentage: 10,
         isIncrease: true,
         increaseValue: 150,
-        icon: <Clock className="w-6 h-6 text-blue-600" />
+        icon: <IndianRupee className="w-6 h-6 text-blue-600" />
     },
     {
-        id: 1,
-        title: "In Progress",
+        id: 2,
+        title: "Total Product",
         value: 1920,
         percentage: 20,
         isIncrease: false,
         increaseValue: 150,
-        icon: <Clock className="w-6 h-6 text-blue-600" />
+        icon: <ShoppingBagIcon className="w-6 h-6 text-blue-600" />
     },
     {
-        id: 1,
-        title: "Finish",
+        id: 3,
+        title: "Total Category",
         value: 4214,
         percentage: 10,
         isIncrease: true,
         increaseValue: 250,
-        icon: <Clock className="w-6 h-6 text-blue-600" />
+        icon: <Layers2Icon className="w-6 h-6 text-blue-600" />
     },
 ]
