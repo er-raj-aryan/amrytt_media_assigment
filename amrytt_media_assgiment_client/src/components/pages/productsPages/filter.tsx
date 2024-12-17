@@ -2,7 +2,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CrossIcon, LayoutGridIcon, Search, XIcon } from "lucide-react";
+import { LayoutGridIcon, Search, XIcon } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import React from "react";
