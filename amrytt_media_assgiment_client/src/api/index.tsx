@@ -1,6 +1,6 @@
 import axios, { CreateAxiosDefaults } from 'axios';
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api';
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL + '/api' || 'https://amrytt-media-assigment.onrender.com/api';
 
 const apiClient = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
